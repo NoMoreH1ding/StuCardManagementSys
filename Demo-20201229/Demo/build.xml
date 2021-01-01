@@ -1,0 +1,53 @@
+<project name="demo" default="batch">
+	
+	<target name="init">
+		<property name="project.name"  value="demo"></property>
+		<property name="web.dir"       value="./WebRoot"></property>
+		<property name="src.dir"       value="./src"></property>		
+		<property name="build.dir"     value="${web.dir}/WEB-INF/classes"></property>
+		<property name="lib.dir"       value="${web.dir}/WEB-INF/lib"></property>
+		<property name="dist.dir"      value="./dist"></property>
+		<property name="webapps.dir"   value="C:\Java\tomcat\webapps"></property>
+	</target>
+	
+	<path id="classpath">
+		<fileset dir="${build.dir}"><include name="**/*.class"/></fileset>
+		<fileset dir="${lib.dir}"><include name="**/*.jar"/></fileset>
+	</path>	
+	
+	<target name="compile">
+		<echo message="编译Java代码" />
+		<javac srcdir="${src.dir}"  destdir="${build.dir}">
+			<classpath refid="classpath"></classpath>
+			<include name="**/*.java" />
+		</javac>
+	</target>
+	
+	<target name="pack">
+		<echo message="打包项目文件" />
+		<jar destfile="${dist.dir}/${project.name}.war">
+			<zipfileset dir="${web.dir}"
+				excludes="**/servlet-api.jar"
+				includes="**/*.*">
+			</zipfileset>
+		</jar>
+	</target>
+	
+	<target name="depoly">
+		<echo message="部署项目" />
+		<delete file="${webapps.dir}/${project.name}.war"/>
+		<copy file="${dist.dir}/${project.name}.war" todir="${webapps.dir}"/>
+	</target>	
+	
+	<target name="batch" depends="init">
+		<antcall target="compile"></antcall>
+		<antcall target="pack"></antcall>
+		<antcall target="depoly"></antcall>
+	</target>
+	
+</project>
+
+
+
+
+
