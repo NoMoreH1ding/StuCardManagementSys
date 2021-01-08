@@ -81,9 +81,9 @@ pageEncoding="UTF-8"%-->
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="background-color: transparent;" >
           <a href="#overview" class="mdl-layout__tab is-active">总览</a>
+          <a href="#adduser" class="mdl-layout__tab">添加用户</a>
           <a href="#money" class="mdl-layout__tab">消费&充值</a>
-          <a href="#lost" class="mdl-layout__tab">挂失</a>
-          <a href="#help" class="mdl-layout__tab">帮助</a>
+          <a href="#lost" class="mdl-layout__tab">挂失处理</a>
         </div>
       </header>
       <main class="mdl-layout__content">
@@ -137,21 +137,36 @@ pageEncoding="UTF-8"%-->
               </div>
             </div>
           </section>
+          <br><br><br>
+        </div>
+
+        <div class="mdl-layout__tab-panel" id="adduser">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h4>添加用户</h4>
+              <p>
+                这里是进行添加用户的地方
+              </p>
+
+            </div>
+          </section>
           <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
               <div class="mdl-card__supporting-text">
-                <h4>来点个性化设置行吗？</h4>
-                已经看腻了单调的Welcome头图？来给自己换个欢迎图像吧<br><br>
-                比起这个，不如说这是你的头像<br><br>
-                更换时请遵守以下规则：<br>
-                <ul>
-                  <li>你随便换吧实际上没啥规则</li>
-                  <li>这实在是太空了孩子不知道写啥了</li>
-                  <li>写仨ul凑数应该没什么问题吧</li>
-                </ul>
+                添加用户
+                <form action="adduser" method="post">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="newname">
+                    <label class="mdl-textfield__label" for="newname">姓名</label>
+                  </div>
+                  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="isadmin">
+                    <input type="checkbox" id="isadmin" class="mdl-switch__input">
+                    <span class="mdl-switch__label">是否为管理员?</span>
+                  </label>
+                </form>
               </div>
               <div class="mdl-card__actions">
-                <a href="#" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要换！</a>
+                <a type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">添加！</a>
               </div>
             </div>
           </section>
@@ -169,31 +184,37 @@ pageEncoding="UTF-8"%-->
             </div>
           </section>
           <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white" style="background: url(./css/images/save.gif) no-repeat -12px ;background-size: 200% ">
-            </header>
             <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
               <div class="mdl-card__supporting-text">
                 存入
                 <form action="save" method="post">
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                  <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="save">
-                  <label class="mdl-textfield__label" for="save">我要存……</label>
-                  <span class="mdl-textfield__error">能存点数吗？</span>
-                </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="saveid">
+                    <label class="mdl-textfield__label" for="saveid">卡号……</label>
+                    <span class="mdl-textfield__error">输入正确的卡号！</span>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="save">
+                    <label class="mdl-textfield__label" for="save">我要存……</label>
+                    <span class="mdl-textfield__error">能存点数吗？</span>
+                  </div>
               </form>
               </div>
               <div class="mdl-card__actions">
-                <a type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要存！</a>
+                <a type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">给他存！</a>
               </div>
             </div>
           </section>
           <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white" style="background: url(./css/images/spend.jpg) no-repeat center;background-size: 225px 210px ">
-            </header>
             <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
               <div class="mdl-card__supporting-text">
                 花费
                 <form action="spend" method="post">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="spendid">
+                    <label class="mdl-textfield__label" for="spendid">卡号……</label>
+                    <span class="mdl-textfield__error">输入正确的卡号！</span>
+                  </div>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="spend">
                     <label class="mdl-textfield__label" for="spend">我要花……</label>
@@ -202,7 +223,7 @@ pageEncoding="UTF-8"%-->
                 </form>
               </div>
               <div class="mdl-card__actions">
-                <a type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要花！</a>
+                <a type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">扣钱！</a>
               </div>
             </div>
           </section>
@@ -212,23 +233,19 @@ pageEncoding="UTF-8"%-->
         <div class="mdl-layout__tab-panel" id="lost">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
-              <h4>挂失</h4>
-              <p>
-                等我找到了card就把你们都撒了
-              </p>
+              <h4>挂失处理</h4>
               <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white" style="background: url(./css/images/disable.png) no-repeat center;background-size: 180px 180px ">
-                </header>
                 <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                   <div class="mdl-card__supporting-text">
-                    <h4>挂失</h4>
+                    <h5>不会吧不会吧不会吧</h5>
+                    <h5>真的有人天天弄丢东西的？？？</h5>
                     <div id="verifyCodeDemo" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                       <input type="text" id="code_input" class="mdl-textfield__input">
                       <label class="mdl-textfield__label" for="code_input">输入验证码...</label>
                       <p id="picyzm"></p>
                     </div>
                     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="btn">
-                      验证
+                      把他们挂失的都给我扬了！
                     </a>
                     <script type="text/javascript">
                       //初始化验证码
@@ -242,7 +259,7 @@ pageEncoding="UTF-8"%-->
                       btn.onclick = function() {
                         var res = verifyCode.validate(code.value);
                         if (res) {
-                          alert("验证通过,已经将您的校园卡标记为挂失状态，等待管理员处理");
+                          alert("验证通过,侦测到在途的聚变打击");
                         } else {
                           alert("验证码错误");
                         }
@@ -256,80 +273,6 @@ pageEncoding="UTF-8"%-->
           <br><br><br>
         </div>
 
-        <div class="mdl-layout__tab-panel" id="help">
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <div class="mdl-cell mdl-cell--12-col">
-              <h4>（没什么用的）帮助信息</h4>
-              <p>
-              好吧，既然你已经点开了这个，证明又有一个好奇宝宝上当了。
-              这里写满了废话，看了可能也不会对你的使用有什么帮助。
-              只是作为一个页面存在罢了。后文将填充大量的法国废话
-              </p>
-              <p>
-                Sit qui est voluptate proident minim cillum in aliquip cupidatat labore pariatur id tempor id. Proident occaecat occaecat sint mollit tempor duis dolor cillum anim. Dolore sunt ea mollit fugiat in aliqua consequat nostrud aliqua ut irure in dolore. Proident aliqua culpa sint sint exercitation. Non proident occaecat reprehenderit veniam et proident dolor id culpa ea tempor do dolor. Nulla adipisicing qui fugiat id dolor. Nostrud magna voluptate irure veniam veniam labore ipsum deserunt adipisicing laboris amet eu irure. Sunt dolore nisi velit sit id. Nostrud voluptate labore proident cupidatat enim amet Lorem officia magna excepteur occaecat eu qui. Exercitation culpa deserunt non et tempor et non.
-              </p>
-              <p>
-                Do dolor eiusmod eu mollit dolore nostrud deserunt cillum irure esse sint irure fugiat exercitation. Magna sit voluptate id in tempor elit veniam enim cupidatat ea labore elit. Aliqua pariatur eu nulla labore magna dolore mollit occaecat sint commodo culpa. Eu non minim duis pariatur Lorem quis exercitation. Sunt qui ex incididunt sit anim incididunt sit elit ad officia id.
-              </p>
-              <ul class="toc">
-                <h4>目录</h4>
-                <a href="#lorem1">总览</a>
-                <a href="#lorem2">消费与充值</a>
-                <a href="#lorem3">挂失</a>
-              </ul>
-
-              <h5 id="lorem1">总览</h5>
-              <p>
-              总览主要分为三个模块，欢迎界面、信息界面及更换单调的welcome头图界面
-              </p>
-              <ul>
-                <li>欢迎界面展示了你自定义的头图，并把好奇宝宝导向到这里。</li>
-                <li>信息界面展示了你校园卡的基本信息，这么高级的实时监视窗口是真的难搞</li>
-                <li>让我！换点！二次元！头图！！！</li>
-              </ul>
-              <p>
-                Sit qui est voluptate proident minim cillum in aliquip cupidatat labore pariatur id tempor id. Proident occaecat occaecat sint mollit tempor duis dolor cillum anim. Dolore sunt ea mollit fugiat in aliqua consequat nostrud aliqua ut irure in dolore. Proident aliqua culpa sint sint exercitation. Non proident occaecat reprehenderit veniam et proident dolor id culpa ea tempor do dolor. Nulla adipisicing qui fugiat id dolor. Nostrud magna voluptate irure veniam veniam labore ipsum deserunt adipisicing laboris amet eu irure. Sunt dolore nisi velit sit id. Nostrud voluptate labore proident cupidatat enim amet Lorem officia magna excepteur occaecat eu qui. Exercitation culpa deserunt non et tempor et non.
-              </p>
-              <p>
-                Do dolor eiusmod eu mollit dolore nostrud deserunt cillum irure esse sint irure fugiat exercitation. Magna sit voluptate id in tempor elit veniam enim cupidatat ea labore elit. Aliqua pariatur eu nulla labore magna dolore mollit occaecat sint commodo culpa. Eu non minim duis pariatur Lorem quis exercitation. Sunt qui ex incididunt sit anim incididunt sit elit ad officia id.
-              </p>
-              <h5 id="lorem2">消费与充值</h5>
-              <p>
-              诶嘿，还没写呢。
-              </p>
-              <p>
-                Tempor voluptate ex consequat fugiat aliqua. Do sit et reprehenderit culpa deserunt culpa. Excepteur quis minim mollit irure nulla excepteur enim quis in laborum. Aliqua elit voluptate ad deserunt nulla reprehenderit adipisicing sint. Est in eiusmod exercitation esse commodo. Ea reprehenderit exercitation veniam adipisicing minim nostrud. Veniam dolore ex ea occaecat non enim minim id ut aliqua adipisicing ad. Occaecat excepteur aliqua tempor cupidatat aute dolore deserunt ipsum qui incididunt aliqua occaecat sit quis. Culpa sint aliqua aliqua reprehenderit veniam irure fugiat ea ad.
-              </p>
-              <p>
-                Eu minim fugiat laborum irure veniam Lorem aliqua enim. Aliqua veniam incididunt consequat irure consequat tempor do nisi deserunt. Elit dolore ad quis consectetur sint laborum anim magna do nostrud amet. Ea nulla sit consequat quis qui irure dolor. Sint deserunt excepteur consectetur magna irure. Dolor tempor exercitation dolore pariatur incididunt ut laboris fugiat ipsum sunt veniam aute sunt labore. Non dolore sit nostrud eu ad excepteur cillum eu ex Lorem duis.
-              </p>
-              <p>
-                Sit qui est voluptate proident minim cillum in aliquip cupidatat labore pariatur id tempor id. Proident occaecat occaecat sint mollit tempor duis dolor cillum anim. Dolore sunt ea mollit fugiat in aliqua consequat nostrud aliqua ut irure in dolore. Proident aliqua culpa sint sint exercitation. Non proident occaecat reprehenderit veniam et proident dolor id culpa ea tempor do dolor. Nulla adipisicing qui fugiat id dolor. Nostrud magna voluptate irure veniam veniam labore ipsum deserunt adipisicing laboris amet eu irure. Sunt dolore nisi velit sit id. Nostrud voluptate labore proident cupidatat enim amet Lorem officia magna excepteur occaecat eu qui. Exercitation culpa deserunt non et tempor et non.
-              </p>
-              <p>
-                Do dolor eiusmod eu mollit dolore nostrud deserunt cillum irure esse sint irure fugiat exercitation. Magna sit voluptate id in tempor elit veniam enim cupidatat ea labore elit. Aliqua pariatur eu nulla labore magna dolore mollit occaecat sint commodo culpa. Eu non minim duis pariatur Lorem quis exercitation. Sunt qui ex incididunt sit anim incididunt sit elit ad officia id.
-              </p>
-              <h5 id="lorem3">挂失</h5>
-              <p>
-              诶嘿，还没写呢。
-              </p>
-              <p>
-                Sit qui est voluptate proident minim cillum in aliquip cupidatat labore pariatur id tempor id. Proident occaecat occaecat sint mollit tempor duis dolor cillum anim. Dolore sunt ea mollit fugiat in aliqua consequat nostrud aliqua ut irure in dolore. Proident aliqua culpa sint sint exercitation. Non proident occaecat reprehenderit veniam et proident dolor id culpa ea tempor do dolor. Nulla adipisicing qui fugiat id dolor. Nostrud magna voluptate irure veniam veniam labore ipsum deserunt adipisicing laboris amet eu irure. Sunt dolore nisi velit sit id. Nostrud voluptate labore proident cupidatat enim amet Lorem officia magna excepteur occaecat eu qui. Exercitation culpa deserunt non et tempor et non.
-              </p>
-              <p>
-                Do dolor eiusmod eu mollit dolore nostrud deserunt cillum irure esse sint irure fugiat exercitation. Magna sit voluptate id in tempor elit veniam enim cupidatat ea labore elit. Aliqua pariatur eu nulla labore magna dolore mollit occaecat sint commodo culpa. Eu non minim duis pariatur Lorem quis exercitation. Sunt qui ex incididunt sit anim incididunt sit elit ad officia id.
-              </p>
-              <p>
-                Id occaecat velit non ipsum occaecat aliqua quis ut. Eiusmod est magna non esse est ex incididunt aute ullamco. Cillum excepteur sint ipsum qui quis velit incididunt amet. Qui deserunt anim enim laborum cillum reprehenderit duis mollit amet ad officia enim. Minim sint et quis aliqua aliqua do minim officia dolor deserunt ipsum laboris. Nulla nisi voluptate consectetur est voluptate et amet. Occaecat ut quis adipisicing ad enim. Magna est magna sit duis proident veniam reprehenderit fugiat reprehenderit enim velit ex. Ullamco laboris culpa irure aliquip ad Lorem consequat veniam ad ipsum eu. Ipsum culpa dolore sunt officia laborum quis.
-              </p>
-
-              <h5>没辣，不要再往下翻了，真的没有彩蛋！</h5>
-              <div class="mdl-spinner mdl-js-spinner is-active"></div>
-              <h5>这真的只是一个假装在加载的loading图标！！！（认真脸）</h5>
-            </div>
-          </section>
-          <br><br><br>
-        </div>
 
         <footer class="mdl-mega-footer">
           <div class="mdl-mega-footer--middle-section">
