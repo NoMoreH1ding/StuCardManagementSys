@@ -1,7 +1,6 @@
 package edu.swu.scms.auth;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,9 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import edu.swu.scms.tool.DBTools;
 import edu.swu.scms.tool.ResultSetHandler;
 import edu.swu.scms.user.User;
-import org.junit.Assert;
-
-import static org.junit.Assert.*;
 
 
 @WebServlet("/login")
@@ -35,20 +31,15 @@ public class LoginServlet extends HttpServlet {
 		String user = request.getParameter("name");
 		String pass = request.getParameter("pass");
 
+
 		try {
 			User u = this.authenticate(user, pass);
 			if ( u != null ) {
 				if (u.getRole().equalsIgnoreCase("admin")) {
-					request.getSession().setAttribute("username",u.getUser() );
-					request.getSession().setAttribute("id",u.getId() );
-					request.getSession().setAttribute("balance",u.getBalance() );
-					request.getSession().setAttribute("islost",u.getIsLost() );
+					initSession(request, u);
 					response.sendRedirect("admin.jsp");
 				} else {
-					request.getSession().setAttribute("username",u.getUser() );
-					request.getSession().setAttribute("id",u.getId() );
-					request.getSession().setAttribute("balance",u.getBalance() );
-					request.getSession().setAttribute("islost",u.getIsLost() );
+					initSession(request, u);
 					response.sendRedirect("user.jsp");
 				}				
 			} else {
@@ -59,19 +50,27 @@ public class LoginServlet extends HttpServlet {
 			throw new IOException(e);
 		}
 	}
-	
+
+	private void initSession(HttpServletRequest request, User u) {
+		request.getSession().setAttribute("username",u.getUser() );
+		request.getSession().setAttribute("id",u.getId() );
+		request.getSession().setAttribute("password",u.getPass() );
+		request.getSession().setAttribute("balance",u.getBalance() );
+		request.getSession().setAttribute("islost",u.getIsLost() );
+	}
+
 
 	private User authenticate(String name, String pass) throws SQLException {
 		String sql = String.format(
 			"select * from user where name='%s' and passwd=md5('%s')",
 			name, pass
-		);		
+		);
 		System.out.println(sql);
-		
-		final List<User> users = new ArrayList<User>();	
+
+		final List<User> users = new ArrayList<User>();
 		DBTools.query(sql, new ResultSetHandler() {
 			@Override
-			public void handle(ResultSet rs) throws SQLException {				
+			public void handle(ResultSet rs) throws SQLException {
 				while(rs.next()) {
 					User u = new User();
 					u.setId(rs.getString("id"));
@@ -82,8 +81,8 @@ public class LoginServlet extends HttpServlet {
 					u.setBalance(rs.getFloat("balance"));
 					users.add(u);
 				}
-			}			
-		});		
+			}
+		});
 		return users.size() > 0 ? users.get(0) : null;
 	}
 }

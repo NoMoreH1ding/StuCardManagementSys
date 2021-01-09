@@ -1,4 +1,4 @@
-package edu.swu.scms.admin;
+package edu.swu.scms.user;
 
 
 import edu.swu.scms.tool.DBTools;
@@ -12,8 +12,8 @@ import java.sql.SQLException;
 
 import static edu.swu.scms.tool.DataUpdate.dataUpdate;
 
-@WebServlet("/clearlost")
-public class ClearLostServlet extends HttpServlet {
+@WebServlet("/userlost")
+public class UserLostServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -24,9 +24,9 @@ public class ClearLostServlet extends HttpServlet {
             throws IOException {
 
         try {
-            this.ClearLost();
+            this.UserLost(request);
             dataUpdate(request);
-            response.sendRedirect("admin.jsp");
+            response.sendRedirect("user.jsp");
         } catch (SQLException e) {
             throw new IOException(e);
         }
@@ -36,9 +36,11 @@ public class ClearLostServlet extends HttpServlet {
     //jdbc:mysql://localhost:3306/test?user=root&password=&useUnicode=true&characterEncoding=gbk&autoReconnect=true&failOverReadOnly=false
 
 
-    private int ClearLost() throws SQLException {
+    private int UserLost(HttpServletRequest request) throws SQLException {
+        Object id=request.getSession().getAttribute("id");
+        System.out.println(id);
         String sql = String.format(
-                "UPDATE `stucardmanagementsys`.`user`SET `islost`='no'");
+                "UPDATE `stucardmanagementsys`.`user`SET islost='yes' where `id`='%s'",id);
         System.out.println(sql);
 
         return DBTools.update(sql);

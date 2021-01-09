@@ -152,25 +152,6 @@ limitations under the License
                     </div>
                 </div>
             </section>
-            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                <div class="mdl-card mdl-cell mdl-cell--12-col">
-                    <div class="mdl-card__supporting-text">
-                        <h4>来点个性化设置行吗？</h4>
-                        已经看腻了单调的Welcome头图？来给自己换个欢迎图像吧<br><br>
-                        比起这个，不如说这是你的头像<br><br>
-                        更换时请遵守以下规则：<br>
-                        <ul>
-                            <li>你随便换吧实际上没啥规则</li>
-                            <li>这实在是太空了孩子不知道写啥了</li>
-                            <li>写仨ul凑数应该没什么问题吧</li>
-                        </ul>
-                    </div>
-                    <div class="mdl-card__actions">
-                        <a href="#"
-                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要换！</a>
-                    </div>
-                </div>
-            </section>
             <br><br><br>
         </div>
 
@@ -189,19 +170,19 @@ limitations under the License
                         style="background: url(./css/images/save.gif) no-repeat -12px ;background-size: 200% ">
                 </header>
                 <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-                    <div class="mdl-card__supporting-text">
-                        存入
-                        <form action="save" method="post">
+                    <form action="usersave" method="post">
+                        <div class="mdl-card__supporting-text">
+                            <div>存入</div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="save">
-                                <label class="mdl-textfield__label" for="save">我要存……</label>
+                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="usersave" id="usersave">
+                                <label class="mdl-textfield__label" for="usersave">我要存……</label>
                                 <span class="mdl-textfield__error">能存点数吗？</span>
                             </div>
-                        </form>
-                    </div>
-                    <div class="mdl-card__actions">
-                        <a type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要存！</a>
-                    </div>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要存！</button>
+                        </div>
+                    </form>
                 </div>
             </section>
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
@@ -209,20 +190,21 @@ limitations under the License
                         style="background: url(./css/images/spend.jpg) no-repeat center;background-size: 225px 210px ">
                 </header>
                 <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-                    <div class="mdl-card__supporting-text">
-                        花费
-                        <form action="spend" method="post">
+                    <form action="userspend" method="post">
+                        <div class="mdl-card__supporting-text">
+                        <div>花费</div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
-                                       id="spend">
-                                <label class="mdl-textfield__label" for="spend">我要花……</label>
+                                       id="userspend" name="userspend">
+                                <label class="mdl-textfield__label" for="userspend">我要花……</label>
                                 <span class="mdl-textfield__error">能花点数吗？</span>
                             </div>
-                        </form>
-                    </div>
-                    <div class="mdl-card__actions">
-                        <a type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要花！</a>
-                    </div>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要花！</button>
+                        </div>
+                    </form>
+
                 </div>
             </section>
             <br><br><br>
@@ -248,9 +230,11 @@ limitations under the License
                                     <label class="mdl-textfield__label" for="code_input">输入验证码...</label>
                                     <p id="picyzm"></p>
                                 </div>
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="btn">
+                                <form action="userlost" method="post">
+                                <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="btn">
                                     验证
-                                </a>
+                                </button>
+                                </form>
                                 <script type="text/javascript">
                                     //初始化验证码
                                     var verifyCode = new GVerify({
@@ -312,12 +296,11 @@ limitations under the License
 
                     <h5 id="lorem1">总览</h5>
                     <p>
-                        总览主要分为三个模块，欢迎界面、信息界面及更换单调的welcome头图界面
+                        总览主要分为俩模块，欢迎界面和信息界面！
                     </p>
                     <ul>
-                        <li>欢迎界面展示了你自定义的头图，并把好奇宝宝导向到这里。</li>
+                        <li>欢迎界面欢迎了你！</li>
                         <li>信息界面展示了你校园卡的基本信息，这么高级的实时监视窗口是真的难搞</li>
-                        <li>让我！换点！二次元！头图！！！</li>
                     </ul>
                     <p>
                         Sit qui est voluptate proident minim cillum in aliquip cupidatat labore pariatur id tempor id.

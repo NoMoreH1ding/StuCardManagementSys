@@ -11,4 +11,12 @@
         <servlet-name>adduser</servlet-name>
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>userlost</servlet-name>
+        <servlet-class>edu.swu.scms.user.UserLostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userlost</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static edu.swu.scms.tool.DataUpdate.dataUpdate;
+
 @WebServlet("/adminchange")
 public class AdminChangeServlet extends HttpServlet {
 
@@ -26,6 +28,7 @@ public class AdminChangeServlet extends HttpServlet {
 
         try {
             this.adminChange(id, money);
+            dataUpdate(request);
             response.sendRedirect("admin.jsp");
         } catch (SQLException e) {
             throw new IOException(e);
@@ -43,4 +46,5 @@ public class AdminChangeServlet extends HttpServlet {
 
         return DBTools.update(sql);
     }
+    
 }
