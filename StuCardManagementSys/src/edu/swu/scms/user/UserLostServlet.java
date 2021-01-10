@@ -37,10 +37,10 @@ public class UserLostServlet extends HttpServlet {
 
 
     private int UserLost(HttpServletRequest request) throws SQLException {
-        Object id=request.getSession().getAttribute("id");
+        Object id = request.getSession().getAttribute("id");
         System.out.println(id);
         String sql = String.format(
-                "UPDATE `stucardmanagementsys`.`user`SET islost='yes' where `id`='%s'",id);
+                "UPDATE `stucardmanagementsys`.`user`SET islost='yes' where `id`='%s'", id);
         System.out.println(sql);
 
         return DBTools.update(sql);

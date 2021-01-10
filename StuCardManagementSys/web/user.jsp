@@ -174,13 +174,16 @@ limitations under the License
                         <div class="mdl-card__supporting-text">
                             <div>存入</div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" name="usersave" id="usersave">
+                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                                       name="usersave" id="usersave">
                                 <label class="mdl-textfield__label" for="usersave">我要存……</label>
                                 <span class="mdl-textfield__error">能存点数吗？</span>
                             </div>
                         </div>
                         <div class="mdl-card__actions">
-                            <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要存！</button>
+                            <button type="submit"
+                                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要存！
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -192,7 +195,7 @@ limitations under the License
                 <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                     <form action="userspend" method="post">
                         <div class="mdl-card__supporting-text">
-                        <div>花费</div>
+                            <div>花费</div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
                                        id="userspend" name="userspend">
@@ -201,7 +204,9 @@ limitations under the License
                             </div>
                         </div>
                         <div class="mdl-card__actions">
-                            <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要花！</button>
+                            <button type="submit"
+                                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">我现在就要花！
+                            </button>
                         </div>
                     </form>
 
@@ -231,9 +236,11 @@ limitations under the License
                                     <p id="picyzm"></p>
                                 </div>
                                 <form action="userlost" method="post">
-                                <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="btn">
-                                    验证
-                                </button>
+                                    <button type="submit"
+                                            class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                            id="btn">
+                                        验证
+                                    </button>
                                 </form>
                                 <script type="text/javascript">
                                     //初始化验证码

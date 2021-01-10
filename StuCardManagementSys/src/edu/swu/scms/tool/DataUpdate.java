@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataUpdate {
-    public static void dataUpdate(HttpServletRequest request){
-        Object name =request.getSession().getAttribute("username");
-        Object pass =request.getSession().getAttribute("password");
+    public static void dataUpdate(HttpServletRequest request) {
+        Object name = request.getSession().getAttribute("username");
+        Object pass = request.getSession().getAttribute("password");
         System.out.println(name);
         System.out.println(pass);
         String sql = String.format(
@@ -25,7 +25,7 @@ public class DataUpdate {
             DBTools.query(sql, new ResultSetHandler() {
                 @Override
                 public void handle(ResultSet rs) throws SQLException {
-                    while(rs.next()) {
+                    while (rs.next()) {
                         User u = new User();
                         u.setId(rs.getString("id"));
                         u.setUser(rs.getString("name"));
@@ -40,8 +40,8 @@ public class DataUpdate {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        request.getSession().setAttribute("balance", users.get(0).getBalance() );
-        request.getSession().setAttribute("islost",users.get(0).getIsLost() );
+        request.getSession().setAttribute("balance", users.get(0).getBalance());
+        request.getSession().setAttribute("islost", users.get(0).getIsLost());
     }
 }
 

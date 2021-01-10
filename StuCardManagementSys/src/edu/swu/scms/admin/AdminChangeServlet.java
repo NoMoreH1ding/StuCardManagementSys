@@ -41,10 +41,10 @@ public class AdminChangeServlet extends HttpServlet {
 
     private int adminChange(String id, String money) throws SQLException {
         String sql = String.format(
-                "UPDATE `stucardmanagementsys`.`user`SET `balance`='%s' WHERE `id`='%s';", money,id);
+                "UPDATE `stucardmanagementsys`.`user`SET `balance`='%s' WHERE `id`='%s';", money, id);
         System.out.println(sql);
 
         return DBTools.update(sql);
     }
-    
+
 }

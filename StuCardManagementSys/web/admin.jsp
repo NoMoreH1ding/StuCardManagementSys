@@ -185,9 +185,11 @@ limitations under the License
                                 <label class="mdl-textfield__label" for="role">角色</label>
                             </div>
                         </div>
-                    <div class="mdl-card__actions">
-                        <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">添加！</button>
-                    </div>
+                        <div class="mdl-card__actions">
+                            <button type="submit"
+                                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">添加！
+                            </button>
+                        </div>
                     </form>
                 </div>
             </section>
@@ -207,9 +209,9 @@ limitations under the License
             <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
                 <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
                     <form action="adminchange" method="post">
-                    <div class="mdl-card__supporting-text">
-                        <h4>随意更改！</h4>
-                        <h5>一切如你所愿！</h5>
+                        <div class="mdl-card__supporting-text">
+                            <h4>随意更改！</h4>
+                            <h5>一切如你所愿！</h5>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
                                        id="saveid" name="saveid">
@@ -217,16 +219,18 @@ limitations under the License
                                 <span class="mdl-textfield__error">输入正确的卡号！</span>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="save" name="save">
+                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="save"
+                                       name="save">
                                 <label class="mdl-textfield__label" for="save">我要改成……</label>
                                 <span class="mdl-textfield__error">能改成数字吗？</span>
                             </div>
 
-                    </div>
-                    <div class="mdl-card__actions">
-                        <button type="submit"
-                           class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">给他改！</button>
-                    </div>
+                        </div>
+                        <div class="mdl-card__actions">
+                            <button type="submit"
+                                    class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">给他改！
+                            </button>
+                        </div>
                     </form>
                 </div>
             </section>
@@ -249,27 +253,28 @@ limitations under the License
                                     <p id="picyzm"></p>
                                 </div>
                                 <form action="clearlost" method="post">
-                                <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="btn" type="submit">
-                                    把他们挂失的都给我扬了！
-                                </button>
-                                <script type="text/javascript">
-                                    //初始化验证码
-                                    var verifyCode = new GVerify({
-                                        id: "picyzm",
-                                        type: "blend"
-                                    });
-                                    //点击按钮验证
-                                    var code = document.getElementById("code_input");
-                                    var btn = document.getElementById("btn");
-                                    btn.onclick = function () {
-                                        var res = verifyCode.validate(code.value);
-                                        if (res) {
-                                            alert("验证通过,侦测到在途的聚变打击");
-                                        } else {
-                                            alert("验证码错误");
+                                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+                                            id="btn" type="submit">
+                                        把他们挂失的都给我扬了！
+                                    </button>
+                                    <script type="text/javascript">
+                                        //初始化验证码
+                                        var verifyCode = new GVerify({
+                                            id: "picyzm",
+                                            type: "blend"
+                                        });
+                                        //点击按钮验证
+                                        var code = document.getElementById("code_input");
+                                        var btn = document.getElementById("btn");
+                                        btn.onclick = function () {
+                                            var res = verifyCode.validate(code.value);
+                                            if (res) {
+                                                alert("验证通过,侦测到在途的聚变打击");
+                                            } else {
+                                                alert("验证码错误");
+                                            }
                                         }
-                                    }
-                                </script>
+                                    </script>
                                 </form>
                             </div>
                         </div>
